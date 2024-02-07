@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body >
+    <h1>Project Management Dashboard</h1>
+
+    <section>
+        <h2>Projects</h2>
+        <ul>
+            {% for project in projects %}
+            <li>{{ project.name }}: {{ project.description }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section>
+        <h2>Employees</h2>
+        <ul>
+            {% for employee in employees %}
+            <li>{{ employee.name }} ({{ employee.email }})</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section>
+        <h2>Tasks</h2>
+        <ul>
+            {% for task in tasks %}
+            <li>
+                {{ task.title }}: {{ task.description }} | 
+                Due: {{ task.due_date }} | 
+                {% comment %} Assigned to: {{ task.assigned_to.name if task.assigned_to else "N/A" }} {% endcomment %}
+                {% if task.completed %}(Completed){% else %}(Pending){% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+</body>
+</html>
